@@ -4,6 +4,21 @@
   box-sizing: border-box;
 }
 
+:root {
+  --card-color-primary: #f7dd43;
+  --card-title-border-color: #746615;
+}
+
+body.blue {
+  --card-color-primary: #338af3;
+  --card-title-border-color: #338af3;
+}
+
+body.green {
+  --card-color-primary: #047c3f;
+  --card-title-border-color: #047c3f;
+}
+
 ul {
   list-style: none;
 }
@@ -39,7 +54,7 @@ header {
   text-align: center;
 
   background: #1d1c19;
-  border-bottom: 2px solid #f7dd43;
+  border-bottom: 2px solid var(--card-color-primary);
   border-radius: 6px;
 }
 
@@ -48,10 +63,11 @@ header {
   gap: 16px;
   justify-content: center;
   align-items: center;
+  cursor: default;
 
   padding: 8px 16px;
   border-radius: 6px;
-  border: 1px solid #746615;
+  border: 1px solid var(--card-title-border-color);
 
   width: fit-content;
   margin-inline: auto;
@@ -89,6 +105,43 @@ header {
   font-weight: 900;
   font-size: 36px;
   line-height: 125%;
+  cursor: default;
 
   color: #e1e1e6;
+}
+
+.card h2:hover,
+.card ul li strong:hover,
+.card ul li img:hover {
+  transform: scale(1.1);
+}
+
+.card h2,
+.card ul li strong,
+.card ul li img {
+  transition: transform 0.3s;
+}
+
+.card {
+  opacity: 0;
+  animation: appear 3s forwards;
+}
+
+@keyframes appear {
+  0%{
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (min-width: 700px) {
+  #cards {
+    max-width: 670px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
